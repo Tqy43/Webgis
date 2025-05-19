@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityWalk南京版-主界面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header class="main-header">
+        <h1>CityWalk南京版应用</h1>
+        <div class="user-info">
+            <span id="username-display"></span>
+            <button id="logout-btn">退出登录</button>
+        </div>
+    </header>
+    <main>
+        <section class="map-section">
+            <div id="map" style="height: 500px;"></div>
+        </section>
+        <section class="feature-section">
+            <!-- 预留：基础功能区块，如推荐路线、景点分布等 -->
+        </section>
+    </main>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/auth-check.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

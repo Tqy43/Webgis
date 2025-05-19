@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: #f4f8fb;
+}
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.login-container {
+    background: #fff;
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    text-align: center;
+    width: 350px;
+}
+
+.register-container {
+    padding-bottom: 1.5rem;
+}
+
+.login-container h2 {
+    margin-bottom: 1.5rem;
+    color: #2d5c88;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    border: 1px solid #bcd0e5;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 0.7rem;
+    background: #2d5c88;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.login-container button:hover {
+    background: #1b3a5d;
+}
+
+#loginMsg, #registerMsg {
+    color: #e74c3c;
+    margin-top: 0.5rem;
+    min-height: 20px;
+}
+
+.form-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-link a {
+    color: #2d5c88;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-link a:hover {
+    text-decoration: underline;
+}
+
+.password-hint {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.3rem;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.main-header {
+    background: #2d5c88;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.main-header h1 {
+    margin: 0;
+}
+
+.user-info {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+#username-display {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#logout-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#logout-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.map-section {
+    margin: 2rem auto;
+    max-width: 1000px;
+}
+
+.feature-section {
+    max-width: 1000px;
+    margin: 0 auto 2rem auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 1.5rem;
+    min-height: 120px;
+} 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityWalk南京版-注册</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+    <div class="login-container register-container">
+        <h2>CityWalk南京版注册</h2>
+        <form id="registerForm">
+            <input type="text" id="username" name="username" placeholder="用户名" required>
+            <input type="password" id="password" name="password" placeholder="密码" required>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="确认密码" required>
+            <div class="password-hint">
+                密码要求：8-15位，必须包含大小写字母和数字
+            </div>
+            <button type="submit">注册</button>
+        </form>
+        <div id="registerMsg"></div>
+        <div class="form-link">
+            已有账号？<a href="login.html">返回登录</a>
+        </div>
+    </div>
+    <script src="js/register.js"></script>
+</body>
+</html> 
