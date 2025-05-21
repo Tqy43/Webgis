@@ -1,60 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 获取存储的token
-    const token = localStorage.getItem('auth_token');
-    const API_BASE_URL = 'http://localhost:5000';
+    // Check if user is logged in
+    checkAuthStatus();
     
-    // 如果没有token，重定向到登录页面
-    if (!token) {
-        window.location.href = 'login.html';
-        return;
-    }
-    
-    // 验证token有效性
-    fetch(`${API_BASE_URL}/api/check-auth`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('认证失败');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (!data.success) {
-            throw new Error('认证检查返回失败');
-        }
-        
-        // 获取用户信息
-        return fetch(`${API_BASE_URL}/api/user`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+    // Add event listener for logout button
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            logout();
         });
-    })
-    .then(response => response.json())
-    .then(userData => {
-        if (userData.success) {
-            // 显示用户名
-            document.getElementById('username-display').textContent = userData.username;
-        }
-    })
-    .catch(error => {
-        console.error('认证错误:', error);
-        // 清除无效token
-        localStorage.removeItem('auth_token');
-        // 重定向到登录页面
-        window.location.href = 'login.html';
-    });
+    }
+});
+
+// Function to check authentication status
+function checkAuthStatus() {
+    const token = localStorage.getItem('auth_token');
+    const username = localStorage.getItem('username');
     
-    // 退出登录按钮点击事件
-    document.getElementById('logout-btn').addEventListener('click', function() {
-        // 清除token
+    if (token && username) {
+        // User is logged in
+        document.getElementById('username-display').textContent = `欢迎, ${username}`;
+        document.getElementById('logout-btn').style.display = 'inline-block';
+        document.querySelector('.login-btn').style.display = 'none';
+        document.querySelector('.register-btn').style.display = 'none';
+        
+        // Dispatch event for other components to respond to
+        document.dispatchEvent(new CustomEvent('userLoggedIn', {
+            detail: { username: username }
+        }));
+    } else {
+        // User is not logged in
+        document.getElementById('username-display').textContent = '';
+        document.getElementById('logout-btn').style.display = 'none';
+        document.querySelector('.login-btn').style.display = 'inline-block';
+        document.querySelector('.register-btn').style.display = 'inline-block';
+        
+        // Dispatch event for other components to respond to
+        document.dispatchEvent(new CustomEvent('userLoggedOut'));
+    }
+}
+
+// Function to handle logout
+function logout() {
+    // Clear authentication data
         localStorage.removeItem('auth_token');
-        // 重定向到登录页面
-        window.location.href = 'login.html';
-    });
-}); 
+    localStorage.removeItem('username');
+    
+    // Update UI
+    checkAuthStatus();
+    
+    // Redirect to login page if needed
+    // window.location.href = 'login.html';
+    
+    // For now, just stay on the page with updated UI
+    alert('您已成功退出登录');
+} 

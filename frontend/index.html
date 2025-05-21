@@ -5,25 +5,225 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CityWalk南京版-主界面</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="main-header">
-        <h1>CityWalk南京版应用</h1>
-        <div class="user-info">
-            <span id="username-display"></span>
-            <button id="logout-btn">退出登录</button>
+    <div class="app-container">
+        <header>
+            <div class="logo">CityWalk南京版</div>
+            <nav class="top-nav">
+                <ul>
+                    <li class="active"><a href="#" data-page="home">主页</a></li>
+                    <li><a href="#" data-page="community">社区</a></li>
+                    <li><a href="#" data-page="profile">用户中心</a></li>
+                </ul>
+            </nav>
+            <div class="user-controls">
+                <span id="username-display"></span>
+                <button id="logout-btn" style="display: none;">退出登录</button>
+                <a href="login.html" class="login-btn">登录</a>
+                <a href="register.html" class="register-btn">注册</a>
+            </div>
+        </header>
+        
+        <!-- 主页内容 -->
+        <div class="main-content" id="home-page">
+            <!-- 功能菜单按钮 -->
+            <button id="show-menu-btn" title="功能菜单"><i class="fas fa-bars"></i></button>
+            
+            <!-- 功能菜单面板 -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h3>功能菜单</h3>
+                    <button class="close-sidebar">&times;</button>
+                </div>
+                
+                <div class="sidebar-content">
+                    <div class="sidebar-section">
+                        <h4>基础功能</h4>
+                        <ul class="feature-buttons">
+                            <li><a href="#" data-feature="city-overview" class="feature-btn"><i class="fas fa-city"></i> 城市概况</a></li>
+                            <li><a href="#" data-feature="recommended-routes" class="feature-btn"><i class="fas fa-route"></i> 推荐路线</a></li>
+                            <li><a href="#" data-feature="travel-guide" class="feature-btn"><i class="fas fa-map-signs"></i> 出行攻略</a></li>
+                            <li><a href="#" data-feature="scenic-spots" class="feature-btn"><i class="fas fa-mountain"></i> 景点分布</a></li>
+                            <li><a href="#" data-feature="accommodation" class="feature-btn"><i class="fas fa-hotel"></i> 门店分布</a></li>
+                            <li><a href="#" data-feature="transportation" class="feature-btn"><i class="fas fa-walking"></i> 行走南京</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section login-required">
+                        <h4>交互功能 <span class="login-notice">(登录后可用)</span></h4>
+                        <ul>
+                            <li><a href="#" data-feature="self-guided-tour" class="feature-btn"><i class="fas fa-compass"></i> 自定义路线</a></li>
+                            <li><a href="#" data-feature="search" class="feature-btn"><i class="fas fa-search"></i> 检索功能</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container" id="map">
+                <!-- 导航功能按钮 -->
+                <div class="nav-button">
+                    <button id="show-nav-panel" title="导航"><i class="fas fa-directions"></i></button>
+                </div>
+            </div>
+            
+            <!-- 导航面板 -->
+            <div class="nav-panel">
+                <div class="nav-panel-header">
+                    <h3>导航功能</h3>
+                    <button class="close-nav-panel">&times;</button>
+                </div>
+                <div class="nav-panel-content">
+                    <p class="nav-message">导航功能即将上线，敬请期待！</p>
+                </div>
+            </div>
         </div>
-    </header>
-    <main>
-        <section class="map-section">
-            <div id="map" style="height: 500px;"></div>
-        </section>
-        <section class="feature-section">
-            <!-- 预留：基础功能区块，如推荐路线、景点分布等 -->
-        </section>
-    </main>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        
+        <!-- 社区页面 -->
+        <div class="page-container" id="community-page">
+            <div class="page-header">
+                <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i> 返回</button>
+                <div class="page-title">社区</div>
+                <div></div>
+            </div>
+            <div class="page-content">
+                <div class="community-posts">
+                    <!-- 示例帖子 -->
+                    <div class="post-card">
+                        <img src="assets/images/post1.jpg" alt="夫子庙夜景" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title">夫子庙的夜晚美如画</h3>
+                            <p class="post-excerpt">昨晚漫步夫子庙，灯火阑珊处，古老与现代交织，这里的夜晚真的太美了...</p>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <img src="assets/images/avatar1.jpg" alt="用户头像" class="author-avatar">
+                                    <span>旅行者小明</span>
+                                </div>
+                                <div class="post-date">2小时前</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="post-card">
+                        <img src="assets/images/post2.jpg" alt="中山陵" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title">中山陵的樱花已盛开</h3>
+                            <p class="post-excerpt">春天到了，中山陵的樱花已经盛开，粉白色的花瓣随风飘落，美不胜收...</p>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <img src="assets/images/avatar2.jpg" alt="用户头像" class="author-avatar">
+                                    <span>花花世界</span>
+                                </div>
+                                <div class="post-date">昨天</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="post-card">
+                        <img src="assets/images/post3.jpg" alt="玄武湖" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title">玄武湖晨跑攻略</h3>
+                            <p class="post-excerpt">分享一下我在玄武湖晨跑的路线和时间安排，清晨的湖边空气特别好...</p>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <img src="assets/images/avatar3.jpg" alt="用户头像" class="author-avatar">
+                                    <span>跑者007</span>
+                                </div>
+                                <div class="post-date">3天前</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="post-card">
+                        <img src="assets/images/post4.jpg" alt="南京美食" class="post-image">
+                        <div class="post-content">
+                            <h3 class="post-title">南京必吃美食推荐</h3>
+                            <p class="post-excerpt">来南京不能错过的美食：鸭血粉丝汤、盐水鸭、桂花糯米藕、糖芋苗...</p>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <img src="assets/images/avatar4.jpg" alt="用户头像" class="author-avatar">
+                                    <span>吃货达人</span>
+                                </div>
+                                <div class="post-date">1周前</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户中心页面 -->
+        <div class="page-container" id="profile-page">
+            <div class="page-header">
+                <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i> 返回</button>
+                <div class="page-title">用户中心</div>
+                <div></div>
+            </div>
+            <div class="page-content">
+                <div class="user-profile">
+                    <div class="profile-header">
+                        <img src="assets/images/user-avatar.jpg" alt="用户头像" class="profile-avatar">
+                        <div class="profile-info">
+                            <h2>用户名</h2>
+                            <p>加入时间：2023年10月</p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <h3>12</h3>
+                            <p>发布</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>28</h3>
+                            <p>收藏</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>46</h3>
+                            <p>足迹</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="user-tabs">
+                    <div class="tab-item active" data-tab="posts">我的发布</div>
+                    <div class="tab-item" data-tab="collections">我的收藏</div>
+                    <div class="tab-item" data-tab="footprints">我的足迹</div>
+                    <div class="tab-item" data-tab="settings">账号设置</div>
+                </div>
+                
+                <div class="tab-content active" id="posts-content">
+                    <div class="community-posts">
+                        <div class="post-card">
+                            <img src="assets/images/user-post1.jpg" alt="用户发布" class="post-image">
+                            <div class="post-content">
+                                <h3 class="post-title">秦淮河畔的日落</h3>
+                                <p class="post-excerpt">在秦淮河边偶遇的绝美日落，金色的阳光洒在河面上...</p>
+                                <div class="post-meta">
+                                    <div class="post-date">1周前</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="collections-content">
+                    <p style="text-align: center; padding: 30px; color: #666;">您还没有收藏任何内容</p>
+                </div>
+                
+                <div class="tab-content" id="footprints-content">
+                    <p style="text-align: center; padding: 30px; color: #666;">暂无足迹记录</p>
+                </div>
+                
+                <div class="tab-content" id="settings-content">
+                    <p style="text-align: center; padding: 30px; color: #666;">账号设置功能即将上线</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/auth-check.js"></script>
     <script src="js/main.js"></script>
 </body>

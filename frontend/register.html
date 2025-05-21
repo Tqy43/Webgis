@@ -5,22 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CityWalk南京版-注册</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="login-body">
     <div class="login-container register-container">
-        <h2>CityWalk南京版注册</h2>
+        <div class="app-branding">
+            <img src="assets/images/logo.png" alt="CityWalk Logo" class="app-logo">
+            <span class="branding-text">CityWalk</span>
+        </div>
+        <h2>创建新账号</h2>
         <form id="registerForm">
-            <input type="text" id="username" name="username" placeholder="用户名" required>
-            <input type="password" id="password" name="password" placeholder="密码" required>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="确认密码" required>
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="用户名" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="密码" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-key"></i>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="确认密码" required>
+            </div>
             <div class="password-hint">
                 密码要求：8-15位，必须包含大小写字母和数字
             </div>
-            <button type="submit">注册</button>
+            <button type="submit">注 册</button>
         </form>
         <div id="registerMsg"></div>
         <div class="form-link">
             已有账号？<a href="login.html">返回登录</a>
+        </div>
+        <div class="login-footer">
+            CityWalk南京版 - 城市漫步，发现美好
         </div>
     </div>
     <script src="js/register.js"></script>

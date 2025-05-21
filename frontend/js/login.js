@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
         msgDiv.style.color = '#3498db';
         msgDiv.textContent = '正在登录...';
         
+        console.log('正在发送登录请求:', userData);
+        
         // 发送登录请求
         try {
             const response = await fetch(API_URL, {
@@ -61,15 +63,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(userData)
             });
             
+            console.log('登录响应状态:', response.status);
             const data = await response.json();
+            console.log('登录响应数据:', data);
             
             if (data.success) {
                 msgDiv.style.color = '#27ae60';
                 msgDiv.textContent = '登录成功！正在跳转...';
                 
-                // 本地存储登录token（可选）
+                // 保存认证信息到本地存储
                 if (data.token) {
                     localStorage.setItem('auth_token', data.token);
+                    localStorage.setItem('username', data.username); // 保存用户名
+                    console.log('认证信息已保存到本地存储');
                 }
                 
                 // 登录成功后跳转到主页
